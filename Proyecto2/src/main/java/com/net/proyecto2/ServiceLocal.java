@@ -5,6 +5,7 @@ import android.R;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -29,8 +30,6 @@ public class ServiceLocal extends Service {
             return ServiceLocal.this;
         }
     }
-
-
     @Override
     public void  onCreate()
     {
@@ -49,17 +48,12 @@ public class ServiceLocal extends Service {
         SimpleDateFormat mDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date=mDateFormat.format(new Date());
         Notification notification =new Notification (
-                R.drawable.ic_menu_info_details,date,System.currentTimeMillis()
-        );
-
+                R.drawable.ic_menu_info_details,date,System.currentTimeMillis());
+        PendingIntent contentIntent= PendingIntent.getActivity(this,0,new Intent (this,MainActivity.class),0);
+        notification.setLatestEventInfo(this,"Service Local",date,contentIntent);
+        this.not_man.notify(IDNOTIFICATION,notification);
     }
-
-
-
-
-
-
-
+    @Override
     public IBinder onBind (Intent intent )
     {
         return mBinder;
