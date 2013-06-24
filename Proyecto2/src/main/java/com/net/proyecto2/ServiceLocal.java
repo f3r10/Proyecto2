@@ -1,8 +1,6 @@
 package com.net.proyecto2;
 
-import android.*;
 import android.R;
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -45,7 +43,7 @@ public class ServiceLocal extends Service {
 
     public void showTimeNotification()
     {
-        SimpleDateFormat mDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat mDateFormat= new SimpleDateFormat("HH:mm:ss");
         String date=mDateFormat.format(new Date());
         Notification notification =new Notification (
                 R.drawable.ic_menu_info_details,date,System.currentTimeMillis());

@@ -57,6 +57,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch(v.getId()){
             case (R.id.btnStartService):
                 startService();
+                break;
+            case (R.id.btnMsjService):
+                msjService();
+                break;
+            case (R.id.btnStopService):
+                stopService();
+                break;
         }
 
     }
